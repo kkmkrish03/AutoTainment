@@ -1,0 +1,10 @@
+{
+    "query": {
+        "name": "Test eg",
+        "input": ["genre"],
+        "output": ["month", "viewers", "registered_base"],
+        "desc": "test test",
+        "request": "testReq",
+        "response": "testRes"
+    }
+}
