@@ -47,6 +47,16 @@ git commit -m "initial commit"
 git remote add origin https://github.com/{username}/AutoTainment.git
 git push -u origin master
 
+git branch dev
+git checkout -b dev
+git push -u origin dev
+
+git tag v1.0 -m "Release v1.0"
+git push origin --tags
+
+git merge master
+git checkout master
+git merge development
 
 ## Git credential manager
 https://github.com/git-ecosystem/git-credential-manager/tree/main
