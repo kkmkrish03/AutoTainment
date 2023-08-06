@@ -29,7 +29,7 @@ def read_config(argv, configs):
             log('ERROR', f'Wrong config file location entered')
             exit(-1)
     else:
-        config_file_location = os.path.join(grand_parent_dir, 'config.properties')
+        config_file_location = os.path.join(grand_parent_dir, 'utility/config/config.properties')
     log('INFO', f'config file location: {config_file_location}')
     try:
         with open(config_file_location, 'rb') as config_file:
@@ -42,7 +42,7 @@ def read_config(argv, configs):
 
 def read_query_config():
     try:
-        config_file_location = os.path.join(grand_parent_dir, 'query.json')
+        config_file_location = os.path.join(grand_parent_dir, 'utility/config/query.json')
         with open(config_file_location, 'rb') as f:
             reports_config = json.load(f)
             f.close()

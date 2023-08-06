@@ -10,7 +10,7 @@ import argparse
 import rottentomatoes as rt
 from imdb import Cinemagoer
 import service.subqueries as subqueries
-from utility.helper.user_input import is_use_email, get_email, get_movie_report_type
+from utility.helper.user_input import is_use_email, get_email, get_movie_report_type, get_valid_fields_for_filter
 from utility.helper.utils import clean_and_recreate_output_dir, read_config, read_query_config
 from utility.helper.validator import is_string_valid_boolean, is_string_true_or_yes, validate_email
 from utility.helper.printer import colored_print
@@ -43,36 +43,7 @@ def start(argv, configs):
 def main():
     reports_config, selected_name, selected_report_config, selected_id = start(sys.argv, configs)
     params_dict = dict()
-    filters = {}
-    filter_map = {}
-    remember = [f"Movie Report Name: {selected_name}", "____Filters:"]
-    while True:
-        if 'valid_inputs' in selected_report_config and len(selected_report_config['valid_inputs']) > 0:
-            print(colored_print(f'Please select the filters from the list below:', Fore.CYAN))
-            for (i, param) in enumerate(selected_report_config['valid_inputs'], start=1):
-                pf = param.split(':')
-                filter_map[f'{i}'] = pf[0]
-                if len(pf) == 2:
-                    print(colored_print(f'{i}) {pf[0]} ({pf[1]}) ', Fore.GREEN))
-                else:
-                    print(colored_print(f'{i}) {pf[0]} ', Fore.GREEN))
-            param_value = input(colored_print('Enter filter number to execute (enter "q" to skip filter): ', Fore.GREEN)).strip()    
-            if 'q' == param_value.lower():
-                break
-            param_value = filter_map.get(param_value)
-            if param_value and param_value in filters:
-                print(colored_print(f'Filter{param_value} already present, please choose anther filter:', Fore.YELLOW))
-            elif param_value:
-                param_data = input(colored_print(f'Enter filter({param_value}) value for match: ', Fore.GREEN)).strip()  
-                filters[param_value] = param_data
-            else:
-                print(colored_print(f'Not sure what was that. ', Fore.GREEN))
-            more = input(colored_print(f'Do you wish to add more filters (True/False): ', Fore.GREEN)).strip()    
-            if not is_string_true_or_yes(more):
-                break
-    for k, v in filters.items():
-        remember.append(f'________{k}: {v}')
-    print(*remember, sep='\n')
+    filters = get_valid_fields_for_filter(selected_name, selected_report_config)
     read_data_generate_report(selected_id, selected_report_config, filters)
     log('INFO', f'Adhoc report {selected_id} execution completed {datetime.now()}')
     # list of movies 

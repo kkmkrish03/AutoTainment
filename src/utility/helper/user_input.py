@@ -47,6 +47,37 @@ def get_movie_report_type(reports_config):
             selected_name = f'Description: {movie_desc[selected_name]}'
             print(colored_print(selected_name, Fore.CYAN))
             
-            
+def get_valid_fields_for_filter(selected_name, selected_report_config):
+    filters = {}
+    filter_map = {}
+    remember = [f"Movie Report Name: {selected_name}", "____Filters:"]
+    while True:
+        if 'valid_inputs' in selected_report_config and len(selected_report_config['valid_inputs']) > 0:
+            print(colored_print(f'Please select the filters from the list below:', Fore.CYAN))
+            for (i, param) in enumerate(selected_report_config['valid_inputs'], start=1):
+                pf = param.split(':')
+                filter_map[f'{i}'] = pf[0]
+                if len(pf) == 2:
+                    print(colored_print(f'{i}) {pf[0]} ({pf[1]}) ', Fore.GREEN))
+                else:
+                    print(colored_print(f'{i}) {pf[0]} ', Fore.GREEN))
+            param_value = input(colored_print('Enter filter number to execute (enter "q" to skip filter): ', Fore.GREEN)).strip()    
+            if 'q' == param_value.lower():
+                break
+            param_value = filter_map.get(param_value)
+            if param_value and param_value in filters:
+                print(colored_print(f'Filter{param_value} already present, please choose anther filter:', Fore.YELLOW))
+            elif param_value:
+                param_data = input(colored_print(f'Enter filter({param_value}) value for match: ', Fore.GREEN)).strip()  
+                filters[param_value] = param_data
+            else:
+                print(colored_print(f'Not sure what was that. ', Fore.GREEN))
+            more = input(colored_print(f'Do you wish to add more filters (True/False): ', Fore.GREEN)).strip()    
+            if not is_string_true_or_yes(more):
+                break
+    for k, v in filters.items():
+        remember.append(f'________{k}: {v}')
+    print(*remember, sep='\n') 
+    return filters         
             
         
