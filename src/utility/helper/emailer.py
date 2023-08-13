@@ -11,7 +11,7 @@ from email import encoders
 from zipfile import ZipFile
 
 
-def send_report(config, report_name, status, result_file):
+def send_report(config, report_name, status, result_file, recepient_list):
     line_1_text = ''
     # The subject line for the email.
     SUBJECT = "Movie Report: " + report_name
@@ -46,7 +46,7 @@ def send_report(config, report_name, status, result_file):
     # Add subject, from and to lines.
     msg['Subject'] = SUBJECT
     msg['From'] = config['smtp.sender.email'].data
-    msg['To'] = config['recepients'].data
+    msg['To'] = recepient_list
 
     # Create a multipart/alternative child container.
     msg_body = MIMEMultipart('alternative')
@@ -88,7 +88,7 @@ def send_report(config, report_name, status, result_file):
                      base64.b64decode(str(config['smtp.mail.pwd'].data)).decode("utf-8"))
         print('Connected to Email server !!')
         text = msg.as_string()
-        server.sendmail(config['smtp.sender.email'].data, config['recepients'].data, text)
+        server.sendmail(config['smtp.sender.email'].data, recepient_list, text)
         server.quit()
 
 

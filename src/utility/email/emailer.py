@@ -12,9 +12,7 @@ from zipfile import ZipFile
 
 
 def send_report(config, subject, msg, author, to, status, result_file):
-
     line_1_text = ''
-
     # The subject line for the email.
     SUBJECT = subject
     line_2 = "Overall Status of Execution is:" + status + ".\r\n\n"

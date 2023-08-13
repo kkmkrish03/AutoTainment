@@ -1,7 +1,7 @@
 import logging
 import os
 import sys
-import json_log_formatter
+from pythonjsonlogger import jsonlogger
 from logging.handlers import RotatingFileHandler
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -13,7 +13,7 @@ import colorama
 from colorama import Fore, Style
 colorama.init()
 
-formatter = json_log_formatter.JSONFormatter()
+formatter = jsonlogger.JsonFormatter()
 filename = '../logs/AutoTainMent.json'
 os.makedirs(os.path.dirname(filename), exist_ok=True)
 json_handler = RotatingFileHandler(filename, maxBytes=20971520, backupCount=5)

@@ -52,7 +52,7 @@ def get_valid_fields_for_filter(selected_name, selected_report_config):
     filter_map = {}
     remember = [f"Movie Report Name: {selected_name}", "____Filters:"]
     while True:
-        if 'valid_inputs' in selected_report_config and len(selected_report_config['valid_inputs']) > 0:
+        if 'valid_inputs' in selected_report_config and selected_report_config['valid_inputs'] and len(selected_report_config['valid_inputs']) > 0:
             print(colored_print(f'Please select the filters from the list below:', Fore.CYAN))
             for (i, param) in enumerate(selected_report_config['valid_inputs'], start=1):
                 pf = param.split(':')
@@ -75,6 +75,8 @@ def get_valid_fields_for_filter(selected_name, selected_report_config):
             more = input(colored_print(f'Do you wish to add more filters (True/False): ', Fore.GREEN)).strip()    
             if not is_string_true_or_yes(more):
                 break
+        else:
+            break
     for k, v in filters.items():
         remember.append(f'________{k}: {v}')
     print(*remember, sep='\n') 

@@ -1,21 +1,20 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Introducing "AutoTainment": A Data-Driven Approach to Movie Discovery and Recommendations
 
-### What is this repository for? ###
+### What is AutoTainment? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+"AutoTainment" is a multifaceted project that leverages APIs from sources like Rotten Tomatoes, Cinemagoer, IMDb, and Jikan to create an intuitive movie discovery and recommendation system. By integrating data from diverse platforms, AutoTainment offers users tailored movie suggestions based on their preferences and queries. Beyond recommendations, it provides comprehensive movie details, trailers, synopses, and real-time industry updates, transforming it into a comprehensive entertainment hub. With collaborative features for sharing reviews and recommendations, AutoTainment merges technology and cinema, streamlining how users explore, enjoy, and interact within the world of movies.
+
+### Features ###
+
+### Prerequisits
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Configurations
+
+### Commands
 
 ### Contribution guidelines ###
 
@@ -29,36 +28,27 @@ This README would normally document whatever steps are necessary to get your app
 * Other community or team contact
 
 
-#### Skils
-- Python
-    * list
-    * random module
-    * input()
-
-#### Advance Skills
-- Pandas
-- APIs
-
-
 ## Git CMD
-git init
-git add .
-git commit -m "initial commit"
-git remote add origin https://github.com/{username}/AutoTainment.git
-git push -u origin master
+#### Initial Creation
+    git init
+    git add .
+    git commit -m "initial commit"
+    git remote add origin https://github.com/kkmkrish03/AutoTainment.git
+    git push -u origin master
 
-git branch dev
-git checkout -b dev
-git push -u origin dev
+#### Setup in local
+    git branch dev
+    git checkout -b dev
+    git push -u origin dev
 
-git tag v1.0 -m "Release v1.0"
-git push origin --tags
+    git tag v1.0 -m "Release v1.0"
+    git push origin --tags
 
-git merge master
-git checkout master
-git merge development
+    git merge master
+    git checkout master
+    git merge development
 
-## Git credential manager
+### Git credential manager
 https://github.com/git-ecosystem/git-credential-manager/tree/main
 https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md
 
@@ -70,6 +60,23 @@ or
 git config --global credential.credentialStore plaintext
 
 git remote add origin https://github.com/kkmkrish03/AutoTainment.git
+
+//////////////////
+
+python3.11 -m venv venv
+
+source venv/bin/activate
+pip freeze > requirements.txt
+pip install --upgrade -r requirements.txt
+deactivate
+
+
+wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.tgz
+tar -xf Python-3.11.0.tgz
+cd Python-3.11.0
+./configure --enable-optimizations
+ make -j$(nproc)
+sudo make altinstall
 
 
 

@@ -1,17 +1,15 @@
 {
-    "get_by_field": {
-        "name": "Test eg",
+    "get_movies_by_field": {
+        "name": "Get Movies based on your filters.",
         "valid_inputs": ["rating", "name", "actors", "directors", "genres", "year", "producer"],
-        "input": ["genre"],
         "output": ["month", "viewers", "registered_base"],
         "desc": "test test",
         "request": "testReq",
         "response": "testRes"
     },
-    "get_by_type": {
-        "name": "Test eg",
-        "valid_inputs": ["rating", "name", "actors", "directors", "genres", "year", "producer"],
-        "input": ["genre"],
+    "get_genre_list": {
+        "name": "Get supported genres.",
+        "valid_inputs": null,
         "output": ["month", "viewers", "registered_base"],
         "desc": "test test",
         "request": "testReq",
